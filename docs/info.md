@@ -13,7 +13,7 @@ Takes input voltages and treats that as the input current injection to the LIF n
 
 ## How to test
 
-Explain how to use your project
+make do something
 
 ## External hardware
 
