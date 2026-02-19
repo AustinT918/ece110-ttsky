@@ -30,6 +30,16 @@ module tt_um_lif (
     .clk(clk),
     .reset_n(rst_n),
     .state(uo_out),
-    .spike(uio_out)
+    .spike(uio_out[7])
   );
+  /*
+  lif lif2 (
+    .current({uio_out[7], 7'b0000000}),
+    .clk(clk),
+    .reset_n(rst_n),
+    .state(uo_out),
+    .spike(uio_out[7])
+  );
+  */
+
 endmodule
