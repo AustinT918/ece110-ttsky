@@ -31,5 +31,5 @@ module tt_um_lif (
     .reset_n(rst_n),
     .state(uo_out),
     .spike(uio_out)
-  )
+  );
 endmodule
