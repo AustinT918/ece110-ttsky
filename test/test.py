@@ -10,6 +10,21 @@ from cocotb.triggers import ClockCycles
 async def test_project(dut):
     dut._log.info("Start")
 
+    clock = Clock(dut.clk, 1, units="ns")
+    cocotb.start_soon(clock.start())
+
+    dut.rst_n.value = 0 # low to reset
+    await ClockCycles(dut.clk, 10) # wait for 10 clock cycles
+    dut.rst_n.value = 1 # high to release reset
+
+    dut.ui_in.value = 0
+    await ClockCycles(dut.clk, 10) # wait for 10 clock cycles
+    
+    dut.ui_in.value = 20
+    await ClockCycles(dut.clk, 100)
+
+    dut.log.info("test completed")
+
     # # Set the clock period to 10 us (100 KHz)
     # clock = Clock(dut.clk, 10, units="us")
     # cocotb.start_soon(clock.start())
