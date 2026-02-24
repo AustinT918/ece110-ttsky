@@ -38,12 +38,12 @@ This line of code defined the threshold where the state will need to be reached 
 ## Resetting: 
 > if (!reset_n) begin // if reset is active (active low)
   > state <= 8'd0;
-## This condition looks at the reset_n value. If this condition is true, it will reset the state to 0.
+This condition looks at the reset_n value. If this condition is true, it will reset the state to 0.
 
 ## Spiking: 
 > end else if (spike) begin // if we spiked, reset the state
   > state <= 8'd0;
-## This condition looks at the spike value. If this condition is, it will reset the state to 0. The main logic to a Fire section of the Integrate and Fire Neuron, when the threshold is reached.
+This condition looks at the spike value. If this condition is, it will reset the state to 0. The main logic to a Fire section of the Integrate and Fire Neuron, when the threshold is reached.
 
 ## Integrating: 
 > end else begin
@@ -53,6 +53,7 @@ This statement is a if the other conditions are not true. This statement is wher
 # How to test/use:
 Tests may be done using the test.py file found in the src. Otherwise, the general process for using it would be to apply rsn_n = 0 and rst_n then drive ui_in with a current for each clock cycle. 
 Read uo_out to observe accumulation and when uo_out reaches the threshold, resets the uo_out and ui_out[7] goes high for one cycle.
+
 ## Example Image of Tests Passing
 This image showcases the testbench for only certain tests passing.
 ![Tests Passing for test.py](<images/Test Passing.png>)
