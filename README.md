@@ -32,27 +32,27 @@ The core logic of the model can be found in the neuron.v file. This will be an e
        end
    end
 ```
-## Threshold Value:
+### Threshold Value:
 ``` 
 localparam THRESHOLD = 8'd200; // the threshold for spiking
 ```
 This line of code defined the threshold where the state will need to be reached for a spike to happen. Here it is 200.
 
-## Resetting: 
+### Resetting: 
 ```
 if (!reset_n) begin // if reset is active (active low)
   state <= 8'd0;
   ```
 This condition looks at the reset_n value. If this condition is true, it will reset the state to 0.
 
-## Spiking: 
+### Spiking: 
 ```
 end else if (spike) begin // if we spiked, reset the state
   state <= 8'd0;
   ```
 This condition looks at the spike value. If this condition is, it will reset the state to 0. The main logic to a Fire section of the Integrate and Fire Neuron, when the threshold is reached.
 
-## Integrating: 
+### Integrating: 
 ```
 end else begin
   state <= state + current; // otherwise, integrate the current
