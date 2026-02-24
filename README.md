@@ -16,38 +16,47 @@ Until state has exceeded or is equal to the threshold, the state resets. Thus th
 # Core Logic:
 The core logic of the model can be found in the neuron.v file. This will be an explanation of design and process.
 
-  > Full Logic:
-  >   localparam THRESHOLD = 8'd200; // the threshold for spiking
+## Full Logic:
+```
+  localparam THRESHOLD = 8'd200; // the threshold for spiking
 
-  >   assign spike = (state >= THRESHOLD); // we spike if the state is above the threshold
-  > 
-  >   always @(posedge clk) begin
-  >       if (!reset_n) begin // if reset is active (active low)
-  >           state <= 8'd0;
-  >       end else if (spike) begin // if we spiked, reset the state
-  >           state <= 8'd0;
-  >       end else begin
-  >           state <= state + current; // otherwise, integrate the current
-  >       end
-  >   end
+  assign spike = (state >= THRESHOLD); // we spike if the state is above the threshold
 
-## Threshold Value: 
-> localparam THRESHOLD = 8'd200; // the threshold for spiking
+   always @(posedge clk) begin
+       if (!reset_n) begin // if reset is active (active low)
+           state <= 8'd0;
+       end else if (spike) begin // if we spiked, reset the state
+           state <= 8'd0;
+       end else begin
+           state <= state + current; // otherwise, integrate the current
+       end
+   end
+```
+## Threshold Value:
+``` 
+localparam THRESHOLD = 8'd200; // the threshold for spiking
+```
 This line of code defined the threshold where the state will need to be reached for a spike to happen. Here it is 200.
 
 ## Resetting: 
-> if (!reset_n) begin // if reset is active (active low)
-  > state <= 8'd0;
+```
+if (!reset_n) begin // if reset is active (active low)
+  state <= 8'd0;
+  ```
 This condition looks at the reset_n value. If this condition is true, it will reset the state to 0.
 
 ## Spiking: 
-> end else if (spike) begin // if we spiked, reset the state
-  > state <= 8'd0;
+```
+end else if (spike) begin // if we spiked, reset the state
+  state <= 8'd0;
+  ```
 This condition looks at the spike value. If this condition is, it will reset the state to 0. The main logic to a Fire section of the Integrate and Fire Neuron, when the threshold is reached.
 
 ## Integrating: 
-> end else begin
-  > state <= state + current; // otherwise, integrate the current
+```
+end else begin
+  state <= state + current; // otherwise, integrate the current
+```
 This statement is a if the other conditions are not true. This statement is where the integrating section of the Integrate and Fire Neuron is implemented. Current is added to the state.
 
 # How to test/use:
