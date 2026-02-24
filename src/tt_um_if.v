@@ -1,6 +1,6 @@
 `default_nettype none
 
-module tt_um_lif (
+module tt_um_if (
     input  wire [7:0] ui_in,
     output wire [7:0] uo_out,
     input  wire [7:0] uio_in,
@@ -16,7 +16,7 @@ module tt_um_lif (
 
     wire spike;
 
-    lif neuron (
+    neuron neuron (
         .current (ui_in),
         .clk     (clk),
         .reset_n (rst_n),

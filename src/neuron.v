@@ -1,6 +1,6 @@
 `default_nettype none
 
-module lif (
+module neuron (
     input  wire [7:0] current,
     input  wire       clk,
     input  wire       reset_n,
